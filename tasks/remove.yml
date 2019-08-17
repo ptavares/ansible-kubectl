@@ -1,0 +1,8 @@
+#####################################
+# Remove current kubectl executable
+#####################################
+- name: "Delete existing kubectl version if it's different."
+  file:
+    path: "{{ kubectl_execution_path }}/{{ kubectl_execution_file_name }}"
+    state: absent
+  become: true

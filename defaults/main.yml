@@ -1,0 +1,31 @@
+---
+# defaults file for ansible-role-kubectl
+
+##############################
+# Kubectl version
+##############################
+# By default, module will download last version
+# To specify a version, use this below param
+# kubectl_install_version: vX.X.X
+
+# URL to retrieve last stable kubectl release version
+kubectl_last_version_info_url: https://storage.googleapis.com/kubernetes-release/release/stable.txt
+
+###############################################
+# Download information - Modify only if needed
+###############################################
+# Directory where executable will be downloaded before installation
+kubectl_download_location: /tmp/
+# Url to packer zip
+kubectl_url: "https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_install_version }}/bin/linux/amd64/kubectl"
+# Downloaded file name
+kubectl_downloaded_file_name: kubectl
+
+###############################################
+# Installation information - Modify only if needed
+###############################################
+# Path where to install kubectl
+kubectl_execution_path: /usr/local/bin
+# Execution file name for kubectl
+kubectl_execution_file_name: kubectl
+

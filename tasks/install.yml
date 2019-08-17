@@ -1,0 +1,25 @@
+---
+##################################
+# Download and install kubectl 
+##################################
+
+- name: "Download Kubectl version {{ kubectl_install_version }}"
+  get_url:
+    url: "{{ kubectl_url }}"
+    dest: "{{ kubectl_download_location }}"
+  when: not( (kubectl_install_version is undefined) or
+             (kubectl_install_version is none) or
+             (kubectl_install_version | trim | length == 0) )
+        and current_kubectl_version.rc != 0
+
+- name: Move Kubectl binarie for execution
+  copy:
+    remote_src: true
+    src: "{{ kubectl_download_location }}/{{ kubectl_downloaded_file_name }}"
+    dest: "{{ kubectl_execution_path }}/{{ kubectl_execution_file_name }}"
+    mode: u+x,g+x,o+x
+  when: not( (kubectl_install_version is undefined) or
+             (kubectl_install_version is none) or
+             (kubectl_install_version | trim | length == 0) )
+        and current_kubectl_version.rc != 0
+  become: true

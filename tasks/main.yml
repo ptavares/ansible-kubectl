@@ -1,0 +1,62 @@
+---
+# tasks file for ansible-role-kubectl
+
+# Check requirement before installation
+- include: check-requirements.yml
+  tags:
+    - kubectl-install-all
+    - kubectl-install-requirements
+
+# Get last version
+- name: Get last kubectl version
+  shell: |
+    set -o pipefail
+    curl {{ kubectl_last_version_info_url }}
+  args:
+    executable: /bin/bash
+    warn: False
+  failed_when: False
+  changed_when: False
+  register: last_kubectl_version
+  when: kubectl_install_version is not defined
+  tags:
+    - kubectl-install-all
+    - kubectl-install-update
+
+# Init version if not defined
+- name: Init kubectl version
+  set_fact:
+    kubectl_install_version: "{{ last_kubectl_version.stdout }}"
+  when: kubectl_install_version is not defined
+  tags:
+    - kubectl-install-all
+    - kubectl-install-update
+
+# Check current version
+- name: Check current kubectl Version
+  shell: |
+    set -o pipefail
+    kubectl version | grep Client | grep {{ kubectl_install_version }}
+  args:
+    executable: /bin/bash
+  failed_when: False
+  changed_when: False
+  register: current_kubectl_version
+  tags:
+    - kubectl-install-all
+    - kubectl-install-update
+
+# Remove current terraform executable if not same version
+- include: remove.yml
+  when: >
+    current_kubectl_version.stdout is defined
+    and kubectl_install_version not in current_kubectl_version.stdout
+  tags:
+    - kubectl-install-all
+    - kubectl-install-update
+
+# Install Kubectl
+- include: install.yml
+  tags:
+    - kubectl-install-all
+    - kubectl-install-update

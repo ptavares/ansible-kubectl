@@ -28,4 +28,3 @@ kubectl_downloaded_file_name: kubectl
 kubectl_execution_path: /usr/local/bin
 # Execution file name for kubectl
 kubectl_execution_file_name: kubectl
-

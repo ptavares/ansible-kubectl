@@ -1,7 +1,7 @@
 [![Build Status](https://img.shields.io/travis/ptavares/ansible-role-kubectl/master.svg?style=flat-square)](https://travis-ci.org/ptavares/ansible-role-kubectl)
-[![Ansible Role](https://img.shields.io/ansible/role/.svg)](https://galaxy.ansible.com/ptavares/ansible-role-kubectl)
-[![Ansible Role](https://img.shields.io/ansible/quality/.svg)](https://galaxy.ansible.com/ptavares/ansible-role-kubectl)
-[![Ansible Role](https://img.shields.io/ansible/role/d/.svg)](https://galaxy.ansible.com/ptavares/ansible-role-kubectl)
+[![Ansible Role](https://img.shields.io/ansible/role/42849.svg)](https://galaxy.ansible.com/ptavares/ansible-role-kubectl)
+[![Ansible Role](https://img.shields.io/ansible/quality/42849.svg)](https://galaxy.ansible.com/ptavares/ansible-role-kubectl)
+[![Ansible Role](https://img.shields.io/ansible/role/d/42849.svg)](https://galaxy.ansible.com/ptavares/ansible-role-kubectl)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/ptavares/ansible-role-kubectl/blob/master/LICENSE)
 
 ansible-role-kubectl

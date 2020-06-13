@@ -8,3 +8,4 @@
   package:
     name: "{{ packages }}"
     state: present
+  become: true

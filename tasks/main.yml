@@ -9,12 +9,11 @@
 
 # Get last version
 - name: Get last kubectl version
-  shell: |
+  ansible.builtin.shell: |
     set -o pipefail
     curl {{ kubectl_last_version_info_url }}
   args:
     executable: /bin/bash
-    warn: False
   failed_when: False
   changed_when: False
   register: last_kubectl_version
